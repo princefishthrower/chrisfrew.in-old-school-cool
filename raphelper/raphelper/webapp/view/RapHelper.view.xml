@@ -1,0 +1,78 @@
+<mvc:View controllerName="sap.ui.demo.masterdetail.controller.RapHelper" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core">
+	<App>
+		<pages>
+			<Page title="OpenUI5 Rap Helper App">
+				<content>
+					<Panel>
+						<content>
+							<ScrollContainer vertical="true" horizontal="false" id="lyricsContainer">
+								<List id="enteredLines" mode="Delete" noDataText="Write a line..." delete="deleteLine"/>	
+							</ScrollContainer>
+							<layout:Grid>
+							<Input value="{/textContent}" placeholder="Write your line here..." liveChange="liveInputChange" valueLiveUpdate="true" id="textInput">
+								<layoutData>
+									<layout:GridData span="L8 M8 S12"/>
+								</layoutData>
+							</Input>
+							<Text text="Syllable Count: {/textLength}" class="sapUiSmallMargin green" id="syllableText">
+								<layoutData>
+									<layout:GridData span="L4 M4 S12"/>
+								</layoutData>
+							</Text>
+							<ComboBox placeholder="Rhymes with {/lastRhyme}..." items="{/rhymeList}" id="rhymesComboBox" width="100%">
+								<core:ListItem key="{word}" text="{word} - score: {score}, syllables: {syllables}"/>
+								<layoutData>
+									<layout:GridData span="L6 M6 S12"/>
+								</layoutData>
+							</ComboBox>
+							<Input value="{/userRhyme}" placeholder="Or custom word to rhyme here..." valueLiveUpdate="true" id="userRhyme">
+								<layoutData>
+									<layout:GridData span="L3 M3 S12"/>
+								</layoutData>
+							</Input>
+							<Input value="{/userSyllable}" type="Number" maxLength="2" placeholder="Restrict syllables in rhyme?" valueLiveUpdate="true" id="userSyllable">
+								<layoutData>
+									<layout:GridData span="L3 M3 S12"/>
+								</layoutData>
+							</Input>
+							<MultiInput placeholder="Or paste multiple lines here..." showValueHelp="false" id="textMultiInput">
+								<layoutData>
+									<layout:GridData span="L12 M12 S12"/>
+								</layoutData>
+							</MultiInput>
+							<Button icon="sap-icon://save" text="Save as .txt - with annotations" press="save" >
+							<layoutData>
+									<layout:GridData span="L3 M3 S12"/>
+								</layoutData>
+							</Button>
+							<Button icon="sap-icon://save" text="Save as .txt - no annotations" press="saveNoAnno" >
+							<layoutData>
+									<layout:GridData span="L3 M3 S12"/>
+								</layoutData>
+							</Button>
+							<Button icon="sap-icon://down" text="Autoscroll" press="autoScroll">
+							<layoutData>
+									<layout:GridData span="L3 M3 S12"/>
+								</layoutData>
+							</Button>
+							<Button icon="sap-icon://delete" text="Delete All" press="deleteAll">
+							<layoutData>
+									<layout:GridData span="L3 M3 S12"/>
+								</layoutData>
+							</Button>
+							</layout:Grid>
+						</content>
+					</Panel>
+					
+				</content>
+				<footer>
+					<OverflowToolbar id="otbFooter">
+						<ToolbarSpacer/>
+						<Button text="Written by Christopher Frewin © 2016. Rhyme results are provided by http://rhymebrain.com" enabled="false"/>
+						<Button icon="sap-icon://sap-ui5" text="App powered by SAPUI5" enabled="false"/>
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

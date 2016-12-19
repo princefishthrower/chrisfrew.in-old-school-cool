@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<body>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script>
+
+var width = 960,
+    height = 500;
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+//Append a defs (for definition) element to your SVG
+var defs = svg.append("defs");
+
+var linearGradient = defs.append("linearGradient")
+                         .attr("id", "linear-gradient");;
+
+//A color scale
+var colorScale = d3.scale.linear()
+    .range(["#2c7bb6", "#00a6ca","#00ccbc","#90eb9d","#ffff8c","#f9d057","#f29e2e","#e76818","#d7191c"]);
+
+//Append multiple color stops by using D3's data/enter step
+linearGradient.selectAll("stop") 
+    .data( colorScale.range() )                  
+    .enter().append("stop")
+    .attr("offset", function(d,i) { return i/(colorScale.range().length - 1); })
+    .attr("stop-color", function(d) { return d; });
+
+
+svg.append("rect")
+    .attr("width", width)
+    .attr("height", height)
+    .style("fill", "url(#linear-gradient)");
+
+
+</script>

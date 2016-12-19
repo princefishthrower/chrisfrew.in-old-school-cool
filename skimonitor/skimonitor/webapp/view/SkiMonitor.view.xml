@@ -1,0 +1,23 @@
+<mvc:View controllerName="sap.ui.demo.masterdetail.controller.SkiMonitor" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+	<App>
+		<pages>
+			<Page title="OpenUI5 Ski Monitor App">
+				<content>
+					<Panel headerText="Ski Monitor for Sankt Anton am Arlberg, Austria">
+						<content>
+							<ScrollContainer horizontal="false" vertical="true">
+							<PullToRefresh refresh="get" id="pullToRefresh"/>
+							<List showSeparators="Inner" items="{/EntryCollection}">
+								<FeedListItem sender="{Author}" icon="http://pbs.twimg.com/profile_images/474919605618475008/7IFjw-Lq.jpeg" iconDensityAware="false" info="{Type}" timestamp="{Date}" text="{Text}"/>
+							</List>
+							</ScrollContainer>
+						</content>
+					</Panel>
+					<FlexBox justifyContent="Start">
+						<Button text="Hey, pretty neat - show me the stack!" press="openStackPopOver"/>
+					</FlexBox>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

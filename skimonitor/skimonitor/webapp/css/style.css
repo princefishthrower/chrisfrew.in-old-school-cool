@@ -1,0 +1,9 @@
+.myImage {
+	border-radius: 3rem;
+	width: 6rem;
+	margin-left: 2rem;
+	margin-top: 2rem;
+}
+.boldText {
+	font-weight: bold;
+}

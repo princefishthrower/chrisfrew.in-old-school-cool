@@ -1,0 +1,10 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:table="sap.ui.table">
+	<ResponsivePopover title="The Stack" class="sapUiPopupWithPadding" placement="Auto" contentWidth="65%">
+		<content>
+			<Image src="img/stack.jpg" class="sapUiSmallMargin" id="stackImage" width="100%"/>
+		</content>
+		<endButton>
+			<Button text="Done" press="onStackPopOverClose"/>
+		</endButton>
+	</ResponsivePopover>
+</core:FragmentDefinition>

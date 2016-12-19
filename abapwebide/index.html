@@ -1,0 +1,290 @@
+<!DOCTYPE HTML>
+<html>
+
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta charset="UTF-8">
+
+        <title>ABAP Web IDE</title>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+        <!-- ace javascript and css -->
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.01/ace.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/css/bootstrap.min.css">
+
+        <script type="text/javascript" src="js/controller.js"></script>
+
+    </head>
+
+    <body>
+<!--         <div class="container">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                     <h3 class="panel-title">ABAP Editor</h3>
+                </div>
+                <div class="panel-body"> -->
+                    <div id="editor">  METHOD getvariantset_get_entityset.
+    DATA : gv_report       TYPE rsvar-report VALUE 'ZPP_APP_VARIANTEN',
+           gv_langu        TYPE sy-langu VALUE 'D',
+           gt_variants     TYPE TABLE OF variant,
+           gs_variant      LIKE LINE OF gt_variants,
+           es_entityset    LIKE LINE OF   et_entityset,
+           gv_v_text       TYPE varit-vtext,
+           gt_valutab      TYPE TABLE OF rsparams,
+           gs_valutab      LIKE LINE OF gt_valutab,
+           matnr18(18)     TYPE c,
+           gt_objects      TYPE TABLE OF vanz,
+           gv_svar         TYPE     rsvar_svar,
+           gt_tvarvc       TYPE TABLE OF tvarvc,
+           gs_tvarvc       LIKE LINE OF gt_tvarvc,
+           gv_dynamic_date TYPE sy-datlo.
+
+
+    SELECT variant FROM vari INTO gs_variant
+      WHERE report = gv_report
+      AND   relid  = 'VA'.
+      APPEND gs_variant TO gt_variants.
+    ENDSELECT.
+
+
+    " loop over every variant
+    LOOP AT gt_variants INTO gs_variant.
+
+
+      " Get Variante description
+      CALL FUNCTION 'RS_VARIANT_TEXT'
+        EXPORTING
+          curr_report = gv_report
+          langu       = gv_langu
+          variant     = gs_variant
+        IMPORTING
+          v_text      = gv_v_text.
+
+
+      CALL FUNCTION 'RS_VARIANT_CONTENTS'
+        EXPORTING
+          report  = gv_report
+          variant = gs_variant
+*         MOVE_OR_WRITE               = 'W'
+*         NO_IMPORT                   = ' '
+*         EXECUTE_DIRECT              = ' '
+*       IMPORTING
+*         SP      =
+        TABLES
+*         L_PARAMS                    =
+*         L_PARAMS_NONV               =
+*         L_SELOP =
+*         L_SELOP_NONV                =
+          valutab = gt_valutab
+*         VALUTABL                    =
+          objects = gt_objects
+*         FREE_SELECTIONS_DESC        =
+*         FREE_SELECTIONS_VALUE       =
+*         FREE_SELECTIONS_OBJ         =
+*       EXCEPTIONS
+*         VARIANT_NON_EXISTENT        = 1
+*         VARIANT_OBSOLETE            = 2
+*         OTHERS  = 3
+        .
+
+
+      LOOP AT gt_valutab INTO gs_valutab WHERE selname EQ 'SVAR'.
+        gv_svar = gs_valutab-low.
+      ENDLOOP.
+
+
+      " process each select option returned and move them into the return structure
+      LOOP AT gt_valutab INTO gs_valutab.
+        " for the title and description fields
+        es_entityset-variant = gs_variant.
+        es_entityset-vtext = gv_v_text.
+        " for all other fields
+        IF gs_valutab-selname = 'SO_WERKS'.
+          es_entityset-werks = gs_valutab-low.
+          SELECT SINGLE name1 FROM t001w INTO es_entityset-name1
+             WHERE werks = es_entityset-werks.
+        ENDIF.
+        IF gs_valutab-selname = 'SO_MATNR'.
+          es_entityset-matnr = gs_valutab-low.
+          UNPACK es_entityset-matnr TO matnr18. " need 18 place matnr for the correct select
+          SELECT SINGLE maktx FROM makt INTO es_entityset-maktx
+             WHERE matnr = matnr18.
+        ENDIF.
+        IF gs_valutab-selname = 'SO_AUFNR'.
+          es_entityset-aufnr = gs_valutab-low.
+          IF gs_valutab-high IS NOT INITIAL. " means there is a bis field for this variant for this
+            APPEND es_entityset TO et_entityset. " first append von field to the return set
+            es_entityset-variant = gs_variant.
+            es_entityset-vtext = gv_v_text.
+            es_entityset-aufnr = gs_valutab-high.
+            es_entityset-bisfeld = 'X'.
+            APPEND es_entityset TO et_entityset. " first append von field to the return set
+            CLEAR es_entityset.
+            CONTINUE. " skip append at the end of this loop
+          ENDIF.
+        ENDIF.
+        IF gs_valutab-selname = 'SO_ARBPL'.
+          es_entityset-arbpl = gs_valutab-low.
+          SELECT SINGLE ktext FROM m_crama INTO es_entityset-ktext
+            WHERE arbpl = es_entityset-arbpl.
+          IF gs_valutab-high IS NOT INITIAL. " means there is a bis field for this variant for this
+            APPEND es_entityset TO et_entityset. " first append von field to the return set
+            es_entityset-variant = gs_variant.
+            es_entityset-vtext = gv_v_text.
+            es_entityset-arbpl = gs_valutab-high.
+            es_entityset-bisfeld = 'X'.
+            SELECT SINGLE ktext FROM m_crama INTO es_entityset-ktext
+              WHERE arbpl = es_entityset-arbpl.
+            APPEND es_entityset TO et_entityset. " first append von field to the return set
+            CLEAR es_entityset.
+            CONTINUE. " skip append at the end of this loop
+          ENDIF.
+        ENDIF.
+        IF gs_valutab-selname = 'SO_DISPO'.
+          es_entityset-dispo = gs_valutab-low.
+          SELECT SINGLE dsnam FROM t024d INTO es_entityset-dsnam
+            WHERE dispo = es_entityset-dispo.
+          IF gs_valutab-high IS NOT INITIAL. " means there is a bis field for this variant for this
+            APPEND es_entityset TO et_entityset. " first append von field to the return set
+            es_entityset-variant = gs_variant.
+            es_entityset-vtext = gv_v_text.
+            es_entityset-dispo = gs_valutab-high.
+            es_entityset-bisfeld = 'X'.
+            SELECT SINGLE dsnam FROM t024d INTO es_entityset-dsnam
+              WHERE dispo = es_entityset-dispo.
+            APPEND es_entityset TO et_entityset. " first append von field to the return set
+            CLEAR es_entityset.
+            CONTINUE. " skip append at the end of this loop
+          ENDIF.
+        ENDIF.
+        IF gs_valutab-selname = 'SO_FEVOR'.
+          es_entityset-fevor = gs_valutab-low.
+          SELECT SINGLE txt FROM t024f INTO es_entityset-txt
+            WHERE fevor = es_entityset-fevor.
+          IF gs_valutab-high IS NOT INITIAL. " means there is a bis field for this variant for this
+            APPEND es_entityset TO et_entityset. " first append von field to the return set
+            es_entityset-variant = gs_variant.
+            es_entityset-vtext = gv_v_text.
+            es_entityset-fevor = gs_valutab-high.
+            es_entityset-bisfeld = 'X'.
+            SELECT SINGLE txt FROM t024f INTO es_entityset-txt
+              WHERE fevor = es_entityset-fevor.
+            APPEND es_entityset TO et_entityset. " first append von field to the return set
+            CLEAR es_entityset.
+            CONTINUE. " skip append at the end of this loop
+          ENDIF.
+        ENDIF.
+
+
+        " date fields - each one can be an EQ or BT case, and each one can be static or dynamic
+        " gstrs - static
+        IF gs_valutab-selname = 'SO_GSTRS'.
+          IF gs_valutab-high IS NOT INITIAL.
+            CONCATENATE gs_valutab-low+6 gs_valutab-low+3(2) gs_valutab-low(2) INTO es_entityset-gstrs. " take the normal value from valutab
+          ELSEIF gs_valutab-low IS NOT INITIAL.
+            
+          ENDIF.
+        ENDIF.
+
+
+        " gstrs - dynamic
+        IF gs_valutab-selname = 'PA_GSTRS'.
+          IF gs_valutab-low IS NOT INITIAL.
+            " get plus and minus days from the variant table
+            SELECT SINGLE * FROM tvarvc INTO gs_tvarvc
+                  WHERE name = gs_valutab-low. " valutab-low is always the key name for the variant table
+
+
+            IF gs_tvarvc-opti = 'EQ'.
+              gv_dynamic_date = sy-datlo + gs_tvarvc-low.
+              es_entityset-gstrs = gv_dynamic_date.
+              APPEND es_entityset TO et_entityset. " first append von field to the return set
+              CONTINUE.
+            ENDIF.
+
+
+            IF gs_tvarvc-opti = 'BT'. "both von and bis field - append low and high field to the running table
+              gv_dynamic_date = sy-datlo + gs_tvarvc-low.
+              es_entityset-gstrs = gv_dynamic_date.
+              APPEND es_entityset TO et_entityset. " first append von field to the return set
+              CLEAR es_entityset.
+              es_entityset-variant = gs_variant.
+              es_entityset-vtext = gv_v_text.
+              gv_dynamic_date = sy-datlo + gs_tvarvc-high.
+              es_entityset-gstrs = gv_dynamic_date.
+              es_entityset-bisfeld = 'X'.
+              APPEND es_entityset TO et_entityset. " first append von field to the return set
+              CLEAR es_entityset.
+              CONTINUE.
+            ENDIF.
+          ENDIF.
+
+
+        ENDIF.
+
+
+        IF gs_valutab-selname = 'SO_GLTRS'.
+          IF gs_valutab-low IS NOT INITIAL.
+            CONCATENATE gs_valutab-low+6 gs_valutab-low+3(2) gs_valutab-low(2) INTO es_entityset-gltrs.
+            "es_entityset-gltrs = gs_valutab-low.
+          ENDIF.
+*          IF gs_valutab-high NE '00.00.00' OR gs_valutab-high CO ''. " means there is a bis date for this variant for this date
+*            APPEND es_entityset TO et_entityset. " first append von field to the return set
+*            es_entityset-variant = gs_variant.
+*            es_entityset-vtext = gv_v_text.
+*            es_entityset-gltrs = gs_valutab-high.
+*            es_entityset-bisfeld = 'X'.
+*            APPEND es_entityset TO et_entityset. " first append von field to the return set
+*            CLEAR es_entityset.
+*            CONTINUE. " skip append at the end of this loop
+*          ENDIF.
+        ENDIF.
+        IF gs_valutab-selname = 'SO_GSTRP'.
+          IF gs_valutab-low IS NOT INITIAL.
+            CONCATENATE gs_valutab-low+6 gs_valutab-low+3(2) gs_valutab-low(2) INTO es_entityset-gstrp.
+          ENDIF.
+*          IF gs_valutab-high NE '00.00.00' OR gs_valutab-high CO ''. " means there is a bis date for this variant for this date
+*            APPEND es_entityset TO et_entityset. " first append von field to the return set
+*            es_entityset-variant = gs_variant.
+*            es_entityset-vtext = gv_v_text.
+*            es_entityset-gstrp = gs_valutab-high.
+*            es_entityset-bisfeld = 'X'.
+*            APPEND es_entityset TO et_entityset. " first append von field to the return set
+*            CLEAR es_entityset.
+*            CONTINUE. " skip append at the end of this loop
+*          ENDIF.
+        ENDIF.
+        IF gs_valutab-selname = 'SO_GLTRP'.
+          IF gs_valutab-low IS NOT INITIAL.
+            CONCATENATE gs_valutab-low+6 gs_valutab-low+3(2) gs_valutab-low(2) INTO es_entityset-gltrp.
+          ENDIF.
+*          IF gs_valutab-high NE '00.00.00' OR gs_valutab-high CO ''. " means there is a bis date for this variant for this date
+*            APPEND es_entityset TO et_entityset. " first append von field to the return set
+*            es_entityset-variant = gs_variant.
+*            es_entityset-vtext = gv_v_text.
+*            es_entityset-gltrp = gs_valutab-high.
+*            es_entityset-bisfeld = 'X'.
+*            APPEND es_entityset TO et_entityset. " first append von field to the return set
+*            CLEAR es_entityset.
+*            CONTINUE. " skip append at the end of this loop
+*          ENDIF.
+        ENDIF.
+        APPEND es_entityset TO et_entityset.
+        CLEAR es_entityset.
+      ENDLOOP.
+
+
+    ENDLOOP.
+
+
+    SORT et_entityset BY bisfeld ASCENDING. " should sort the variants by alphabetical order
+  ENDMETHOD.
+</div>
+<!--         </div>
+    </div>
+</div> -->
+    </body>
+
+</html>
