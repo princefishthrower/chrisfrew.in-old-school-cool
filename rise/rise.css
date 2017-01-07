@@ -1,3 +1,7 @@
+body {
+    overflow:hidden;
+}
+
 .page {
 	background-image: url("img/hubbledeepcomp.jpg");
 	linear-gradient(
