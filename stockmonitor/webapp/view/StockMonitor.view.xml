@@ -1,0 +1,169 @@
+<mvc:View controllerName="sap.ui.demo.masterdetail.controller.StockMonitor" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core">
+	<App>
+		<pages>
+<!-- 			<Page title="Login">
+        		<content>
+	            	<Panel headerText="Login to access StockMon Data">
+	              		<content>  
+	                  		<Input id="email" type="Email" value=""/>
+	                  		<Input id="password" type="Password" value=""/>
+	                  		<Button text="Login" press="login"/>
+	             		</content>
+	             	</Panel>
+        		</content>
+   			</Page> -->
+			<Page title="OpenUI5 Stock Monitor App">
+				<content>
+					<IconTabBar>
+						<items>
+							<IconTabFilter text="Alerts">
+								<Panel headerText="Price Alerts">
+									<Panel headerText="Your Price Alerts">
+										<List items="{alertList>/alerts}" mode="Delete" delete="deleteAlert" noDataText="No alerts set yet...">
+											<StandardListItem title="{parts:[{path: 'alertList>stock'},{path: 'alertList>option'}, {path: 'alertList>price'}], formatter:'formatTitle'}" info="{alertList>note}"/>
+										</List>
+									</Panel>
+									<Panel headerText="Set Price Alert">
+										<content>
+											<layout:Grid>
+											<Text text="Set an email alert when:" class="sapUiSmallMargin">
+												<layoutData>
+													<layout:GridData span="L4 M3 S12"/>
+												</layoutData>
+											</Text>
+											<Input value="{alertInput>/stock}" placeholder="Stock ticker..." liveChange="liveInputChange" valueLiveUpdate="true" type="Text" id="stockInput">
+												<layoutData>
+													<layout:GridData span="L3 M3 S12"/>
+												</layoutData>
+											</Input>
+											<ComboBox value="{alertInput>/option}" placeholder="Choose option..." type="Text" id="optionInput">
+												<core:ListItem key="above" text="rises above"/>
+												<core:ListItem key="below" text="falls below"/>
+												<layoutData>
+													<layout:GridData span="L2 M3 S12"/>
+												</layoutData>
+											</ComboBox>
+											<Text text="$" class="sapUiSmallMargin">
+												<layoutData>
+													<layout:GridData span="L1 M3 S6"/>
+												</layoutData>
+											</Text>
+											<Input value="{alertInput>/price}" placeholder="Price..." valueLiveUpdate="true" type="Number" id="priceInput">
+												<layoutData>
+													<layout:GridData span="L1 M3 S6"/>
+												</layoutData>
+											</Input>
+											<Input value="{alertInput>/note}" placeholder="Custom note here..." valueLiveUpdate="true" type="Text" id="noteInput">
+												<layoutData>
+													<layout:GridData span="L8 M3 S6"/>
+												</layoutData>
+											</Input>
+											<Button icon="sap-icon://save" press="submit">
+											<layoutData>
+													<layout:GridData span="L4 M3 S12"/>
+												</layoutData>
+											</Button>
+											</layout:Grid>
+										</content>
+									</Panel>
+								</Panel>
+								<Panel headerText="Watch List">
+									<Panel headerText="Your Watch List">
+
+									</Panel>
+									<Panel headerText="Add To Watch List">
+
+									</Panel>
+								</Panel>
+							</IconTabFilter>
+							<IconTabFilter text="Rule #1 Analysis">
+								<Input value="{currentStock}" placeholder="Company's stock ticker here. The rest is automatic... :D "/>
+								<Panel headerText="1. Meaning">
+									<Panel headerText="Company Description">
+									</Panel>
+									<Panel headerText="Company Industry Sector">
+									</Panel>
+								</Panel>
+								<Panel headerText="2. Moat">
+									<Panel headerText="The Big Five">
+									</Panel>
+								</Panel>
+								
+								<Panel headerText="3. Managament">
+									<Panel headerText="CEO">
+									</Panel>
+									<Panel headerText="Insider Trading">
+									</Panel>
+								</Panel>
+								<Panel headerText="4. Margin of Safety">
+									<Panel headerText="Sticker Price">
+									</Panel>
+									<Panel headerText="MOS Price">
+									</Panel>
+									<Panel headerText="Current Price">
+									</Panel>
+								</Panel>
+								<Panel text="Buy/Sell - The Three Tools">
+									<Panel headerText="Moving Average Convergence Divergence">
+										<ComboBox placeholder="Select Type of MACD..." type="Text">
+											<core:ListItem key="12-26-9" text="12-26-9 (Standard)"/>
+											<core:ListItem key="8-17-9" text="8-17-9 (Sensitive)"/>
+											<layoutData>
+												<layout:GridData span="L2 M3 S12"/>
+											</layoutData>
+										</ComboBox>
+									</Panel>
+									<Panel headerText="Stochastic">
+										<ComboBox placeholder="Select Type..." type="Text">
+											<core:ListItem key="5-5" text="5-5 (Standard)"/>
+											<core:ListItem key="14-5" text="14-5 (Sensitive)"/>
+											<layoutData>
+												<layout:GridData span="L2 M3 S12"/>
+											</layoutData>
+										</ComboBox>
+									</Panel>
+									<Panel headerText="Moving Average">
+										<ComboBox placeholder="Select Type..." type="Text">
+											<core:ListItem key="10Day" text="10 Day"/>
+											<core:ListItem key="50Day" text="50 Day"/>
+											<layoutData>
+												<layout:GridData span="L2 M3 S12"/>
+											</layoutData>
+										</ComboBox>
+									</Panel>
+								</Panel>
+								<Panel headerText="Overall Conclusion">
+									<Panel>
+										<Text text="BUY">
+											<layoutData>
+												<layout:GridData span="L6 M6 S6"/>
+											</layoutData>
+										</Text>
+										<core:Icon src="sap-icon://thumb-up" color="green"/>
+									</Panel>
+									<Panel>
+										<Text text="SELL">
+											<layoutData>
+												<layout:GridData span="L6 M6 S6"/>
+											</layoutData>
+										</Text>
+										<core:Icon src="sap-icon://thumb-down" color="red"/>
+										<Button icon="sap-icon//accept" text="Put on Watch List" press="addToWatchList"/>
+									</Panel>
+								</Panel>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+					
+				</content>
+				<footer>
+					<OverflowToolbar id="otbFooter">
+						<ToolbarSpacer/>
+						<Button text="Written by Christopher Frewin © 2017. Company and stock information are provided by finviz.com and the Yahoo! finance API." enabled="false"/>
+						<Button icon="sap-icon://sap-ui5" text="App powered by SAPUI5" enabled="false"/>
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
