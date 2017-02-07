@@ -912,6 +912,7 @@ body {
 
 .flottFlott {
     font-family: Flottflott;
+    text-transform: lowercase;
 }
 
 
