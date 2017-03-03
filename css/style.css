@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+body {
+    font-family: Roboto;
+    background: #dbe8ff;
+}
+
+a {
+    color: black;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+ul li {
+    display: inline;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+.container {
+    width: 100%;
+}
+
+.siteContainer {
+    margin: 0 auto;
+    width: 90%;
+}
+
+.site {
+    display: inline-block;
+    position: relative;
+    margin: 70px;
+    top: 30px;
+}
+
+.wrapper {
+    text-align: center;
+}
+
+.wrapper ul {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper li {
+    float: left;
+    padding: 2px 5px;
+}
+
+
+/* on mobile / smaller screens, change the list to block so it is a verticle list */
+
+@media (max-width: 400px) {
+    .site {
+        margin: 10px;
+    }
+}

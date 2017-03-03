@@ -118,7 +118,7 @@ body {
 	}
 
 	.page_nav {
-		overflow: hidden;
+		/*overflow: hidden;*/
 		top: 100px; right: 8px;
 		width: auto; max-height: 0px; padding: 72px 0 0;
 		transition: max-height 0.5s, top 0.5s;
@@ -164,7 +164,7 @@ body {
 @media (max-width: 639px), (max-height: 479px) {
 
 	.page_nav ul {
-		overflow: hidden;
+		/*overflow: hidden;*/
 	}
 	.page_nav li {
 		float: left; width: 50%;
