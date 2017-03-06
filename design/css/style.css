@@ -19,10 +19,10 @@ img{margin:0 auto;}
 /* Page basics */
 
 html {
-	overflow-y: scroll;
 	height: 100%;
 }
 body {
+	overflow: hidden;
 	min-height: 100%; border-left: 8px solid #F92672; border-right: 8px solid #F92672;
 	background-image: url("../img/1.png");
 	/*background-repeat: no-repeat;*/
