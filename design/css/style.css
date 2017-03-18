@@ -60,6 +60,14 @@ body {
 .page_nav_main a {
   text-transform: uppercase;
 	font-weight: bold;
+	-webkit-text-stroke: 3px black;
+	text-shadow:
+		3px 3px 0 #fff,
+		-1px -1px 0 #fff,
+		1px -1px 0 #fff,
+		-1px 1px 0 #fff,
+		1px 1px 0 #fff;
+	font-size: 2rem;
 }
 .page_nav a {
 	text-decoration: none;

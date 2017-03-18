@@ -1,0 +1,16 @@
+img {
+  position: absolute;
+  animation: zoom 2s linear infinite;
+}
+
+@keyframes zoom {
+  @for $i from 0 through 100 {
+    $percent: 1% * $i;
+    #{$percent} {
+      top: -(1000*$i)/2+500#{px};
+      left: -(1000*$i)/2+1000#{px};
+      width: 1000*$i#{px};
+      height: 1000*$i#{px};
+    }
+  }
+}
