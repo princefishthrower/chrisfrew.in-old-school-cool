@@ -1,16 +1,56 @@
-img {
-  position: absolute;
-  animation: zoom 2s linear infinite;
+body {
+  overflow: hidden;
 }
 
-@keyframes zoom {
-  @for $i from 0 through 100 {
-    $percent: 1% * $i;
-    #{$percent} {
-      top: -(1000*$i)/2+500#{px};
-      left: -(1000*$i)/2+1000#{px};
-      width: 1000*$i#{px};
-      height: 1000*$i#{px};
-    }
+img {
+  top: -1640px;
+  left: -1170px;
+  width: 4300px;
+  height: 4300px;
+  transform: rotate(3.5deg);
+  position: absolute;
+  animation: zoomSimple 5s ease-in infinite;
+}
+
+// @function sqrt($r) {
+//   $x0: 1;
+//   $x1: $x0;
+//
+//   @for $i from 1 through 10 {
+//     $x1: $x0 - ($x0 * $x0 - abs($r)) / (2 * $x0);
+//     $x0: $x1;
+//   }
+//
+//   @return $x1;
+// }
+//
+// @keyframes zoom {
+//   @for $i from 0 through 100 {
+//     $percent: 1% * $i;
+//
+//     #{$percent} {
+//       top: -(3200*$i)/2+500#{px};
+//       left: -(3200*$i)/2+1000#{px};
+//       width: 3200*$i#{px};
+//       height: 3200*$i#{px};
+//       transform: rotate(-$i*.85+4.35#{deg})
+//     }
+//   }
+// }
+
+@keyframes zoomSimple {
+  0% {
+    top: -1640px;
+    left: -1170px;
+    width: 4300px;
+    height: 4300px;
+    transform: rotate(3.5deg);
+  }
+  100% {
+    top: -159500px;
+    left: -159000px;
+    width: 320000px;
+    height: 320000px;
+    transform: rotate(-85deg);
   }
 }
