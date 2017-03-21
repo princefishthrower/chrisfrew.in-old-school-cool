@@ -13,69 +13,80 @@ body {
   left: 0;
 }
 
-
 .cipher, .background, .ring, .fog1, .fog2, .fog3, .fog4, .fog5, .fog6 {
   position: absolute;
   width: 99%;
 }
 
-
 .cipher {
+  z-index: 99999;
+}
+.cipherAnimation {
   animation: fadeAway 5s linear 1;
   animation-fill-mode: forwards;
-  z-index: 99999;
 }
 
 .background {
+    border: 20px solid black;
   top: -2.5%;
   left: -2.5%;
-  border: 20px solid black;
-}
-
-.ring {
-  z-index: 999;
 }
 
 // animations for the fog
 .fog1 {
   z-index: 12;
-    animation: drift1 5s ease-in-out infinite;
+}
+.fog1Animation {
+  animation: drift1 5s ease-in-out infinite;
 }
 .fog2 {
   z-index: 11;
-    animation: drift2 5s linear infinite;
+}
+.fog2Animation {
+  animation: drift2 5s linear infinite;
 }
 .fog3 {
   z-index: 4;
-    animation: drift3 5s ease-in infinite;
+}
+.fog3Animation {
+  animation: drift3 5s ease-in infinite;
 }
 .fog4 {
   z-index: 10;
-    animation: drift4 5s ease-out infinite;
+}
+.fog4Animation {
+  animation: drift4 5s ease-out infinite;
 }
 .fog5 {
   z-index: 7;
-    animation: drift5 5s linear infinite;
+}
+.fog5Animation {
+  animation: drift5 5s linear infinite;
 }
 .fog6 {
   z-index: 1;
-    animation: drift6 5s ease-in-out infinite;
+}
+.fog6Animation {
+  animation: drift6 5s ease-in-out infinite;
+}
+//fog divs drift back and forth
+ .fogAnimation {
+  animation-delay: 5s;
+  animation-direction: alternate;
 }
 
 //ring rotates infinitely
 .ring {
   top: -16%;
   left: -3.5%;
-  animation: spin 5s linear infinite;
-  animation-delay: 5s;
   z-index: 99;
 }
-
-//fog divs drift back and forth
- .fog1, .fog2, .fog3, .fog4, .fog5, .fog6 {
+.ringAnimation {
+  animation: spin 5s linear infinite;
   animation-delay: 5s;
-  animation-direction: alternate;
 }
+
+
 
 @keyframes fadeAway {
   0% {opacity: 1}
