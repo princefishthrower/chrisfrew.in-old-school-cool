@@ -1,52 +1,424 @@
 body {
   overflow: hidden; }
 
-img {
-  top: -1640px;
-  left: -1170px;
-  width: 4300px;
-  height: 4300px;
-  transform: rotate(3.5deg);
+.container {
   position: absolute;
-  animation: zoomSimple 1s linear infinite; }
+  margin: auto;
+  width: 500px;
+  /* change size to what you want */
+  height: 500px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; }
 
-@keyframes zoomSimple {
+img {
+  transform: rotate(3.5deg) translate(-50%, -50%);
+  position: relative;
+  animation: zoom 5s linear infinite; }
+
+@keyframes zoom {
   0% {
-    top: -1640px;
-    left: -1170px;
-    width: 4300px;
-    height: 4300px;
-    transform: rotate(3.5deg); }
+    width: 0px;
+    height: 0px;
+    transform: rotate(0deg); }
+  1% {
+    width: 0.5px;
+    height: 0.5px;
+    transform: rotate(-0.85deg); }
+  2% {
+    width: 2px;
+    height: 2px;
+    transform: rotate(-1.7deg); }
+  3% {
+    width: 4.5px;
+    height: 4.5px;
+    transform: rotate(-2.55deg); }
+  4% {
+    width: 8px;
+    height: 8px;
+    transform: rotate(-3.4deg); }
+  5% {
+    width: 12.5px;
+    height: 12.5px;
+    transform: rotate(-4.25deg); }
+  6% {
+    width: 18px;
+    height: 18px;
+    transform: rotate(-5.1deg); }
+  7% {
+    width: 24.5px;
+    height: 24.5px;
+    transform: rotate(-5.95deg); }
+  8% {
+    width: 32px;
+    height: 32px;
+    transform: rotate(-6.8deg); }
+  9% {
+    width: 40.5px;
+    height: 40.5px;
+    transform: rotate(-7.65deg); }
   10% {
-    transform: rotate(-5.35deg);
-  }
+    width: 50px;
+    height: 50px;
+    transform: rotate(-8.5deg); }
+  11% {
+    width: 60.5px;
+    height: 60.5px;
+    transform: rotate(-9.35deg); }
+  12% {
+    width: 72px;
+    height: 72px;
+    transform: rotate(-10.2deg); }
+  13% {
+    width: 84.5px;
+    height: 84.5px;
+    transform: rotate(-11.05deg); }
+  14% {
+    width: 98px;
+    height: 98px;
+    transform: rotate(-11.9deg); }
+  15% {
+    width: 112.5px;
+    height: 112.5px;
+    transform: rotate(-12.75deg); }
+  16% {
+    width: 128px;
+    height: 128px;
+    transform: rotate(-13.6deg); }
+  17% {
+    width: 144.5px;
+    height: 144.5px;
+    transform: rotate(-14.45deg); }
+  18% {
+    width: 162px;
+    height: 162px;
+    transform: rotate(-15.3deg); }
+  19% {
+    width: 180.5px;
+    height: 180.5px;
+    transform: rotate(-16.15deg); }
   20% {
-    transform: rotate(-14.2deg);
-  }
+    width: 200px;
+    height: 200px;
+    transform: rotate(-17deg); }
+  21% {
+    width: 220.5px;
+    height: 220.5px;
+    transform: rotate(-17.85deg); }
+  22% {
+    width: 242px;
+    height: 242px;
+    transform: rotate(-18.7deg); }
+  23% {
+    width: 264.5px;
+    height: 264.5px;
+    transform: rotate(-19.55deg); }
+  24% {
+    width: 288px;
+    height: 288px;
+    transform: rotate(-20.4deg); }
+  25% {
+    width: 312.5px;
+    height: 312.5px;
+    transform: rotate(-21.25deg); }
+  26% {
+    width: 338px;
+    height: 338px;
+    transform: rotate(-22.1deg); }
+  27% {
+    width: 364.5px;
+    height: 364.5px;
+    transform: rotate(-22.95deg); }
+  28% {
+    width: 392px;
+    height: 392px;
+    transform: rotate(-23.8deg); }
+  29% {
+    width: 420.5px;
+    height: 420.5px;
+    transform: rotate(-24.65deg); }
   30% {
-    transform: rotate(-23.05deg);
-  }
+    width: 450px;
+    height: 450px;
+    transform: rotate(-25.5deg); }
+  31% {
+    width: 480.5px;
+    height: 480.5px;
+    transform: rotate(-26.35deg); }
+  32% {
+    width: 512px;
+    height: 512px;
+    transform: rotate(-27.2deg); }
+  33% {
+    width: 544.5px;
+    height: 544.5px;
+    transform: rotate(-28.05deg); }
+  34% {
+    width: 578px;
+    height: 578px;
+    transform: rotate(-28.9deg); }
+  35% {
+    width: 612.5px;
+    height: 612.5px;
+    transform: rotate(-29.75deg); }
+  36% {
+    width: 648px;
+    height: 648px;
+    transform: rotate(-30.6deg); }
+  37% {
+    width: 684.5px;
+    height: 684.5px;
+    transform: rotate(-31.45deg); }
+  38% {
+    width: 722px;
+    height: 722px;
+    transform: rotate(-32.3deg); }
+  39% {
+    width: 760.5px;
+    height: 760.5px;
+    transform: rotate(-33.15deg); }
   40% {
-    transform: rotate(-31.9deg);
-  }
+    width: 800px;
+    height: 800px;
+    transform: rotate(-34deg); }
+  41% {
+    width: 840.5px;
+    height: 840.5px;
+    transform: rotate(-34.85deg); }
+  42% {
+    width: 882px;
+    height: 882px;
+    transform: rotate(-35.7deg); }
+  43% {
+    width: 924.5px;
+    height: 924.5px;
+    transform: rotate(-36.55deg); }
+  44% {
+    width: 968px;
+    height: 968px;
+    transform: rotate(-37.4deg); }
+  45% {
+    width: 1012.5px;
+    height: 1012.5px;
+    transform: rotate(-38.25deg); }
+  46% {
+    width: 1058px;
+    height: 1058px;
+    transform: rotate(-39.1deg); }
+  47% {
+    width: 1104.5px;
+    height: 1104.5px;
+    transform: rotate(-39.95deg); }
+  48% {
+    width: 1152px;
+    height: 1152px;
+    transform: rotate(-40.8deg); }
+  49% {
+    width: 1200.5px;
+    height: 1200.5px;
+    transform: rotate(-41.65deg); }
   50% {
-    transform: rotate(-40.75deg);
-  }
+    width: 1250px;
+    height: 1250px;
+    transform: rotate(-42.5deg); }
+  51% {
+    width: 1300.5px;
+    height: 1300.5px;
+    transform: rotate(-43.35deg); }
+  52% {
+    width: 1352px;
+    height: 1352px;
+    transform: rotate(-44.2deg); }
+  53% {
+    width: 1404.5px;
+    height: 1404.5px;
+    transform: rotate(-45.05deg); }
+  54% {
+    width: 1458px;
+    height: 1458px;
+    transform: rotate(-45.9deg); }
+  55% {
+    width: 1512.5px;
+    height: 1512.5px;
+    transform: rotate(-46.75deg); }
+  56% {
+    width: 1568px;
+    height: 1568px;
+    transform: rotate(-47.6deg); }
+  57% {
+    width: 1624.5px;
+    height: 1624.5px;
+    transform: rotate(-48.45deg); }
+  58% {
+    width: 1682px;
+    height: 1682px;
+    transform: rotate(-49.3deg); }
+  59% {
+    width: 1740.5px;
+    height: 1740.5px;
+    transform: rotate(-50.15deg); }
   60% {
-    transform: rotate(-49.6deg);
-  }
+    width: 1800px;
+    height: 1800px;
+    transform: rotate(-51deg); }
+  61% {
+    width: 1860.5px;
+    height: 1860.5px;
+    transform: rotate(-51.85deg); }
+  62% {
+    width: 1922px;
+    height: 1922px;
+    transform: rotate(-52.7deg); }
+  63% {
+    width: 1984.5px;
+    height: 1984.5px;
+    transform: rotate(-53.55deg); }
+  64% {
+    width: 2048px;
+    height: 2048px;
+    transform: rotate(-54.4deg); }
+  65% {
+    width: 2112.5px;
+    height: 2112.5px;
+    transform: rotate(-55.25deg); }
+  66% {
+    width: 2178px;
+    height: 2178px;
+    transform: rotate(-56.1deg); }
+  67% {
+    width: 2244.5px;
+    height: 2244.5px;
+    transform: rotate(-56.95deg); }
+  68% {
+    width: 2312px;
+    height: 2312px;
+    transform: rotate(-57.8deg); }
+  69% {
+    width: 2380.5px;
+    height: 2380.5px;
+    transform: rotate(-58.65deg); }
   70% {
-    transform: rotate(-58.45deg);
-  }
+    width: 2450px;
+    height: 2450px;
+    transform: rotate(-59.5deg); }
+  71% {
+    width: 2520.5px;
+    height: 2520.5px;
+    transform: rotate(-60.35deg); }
+  72% {
+    width: 2592px;
+    height: 2592px;
+    transform: rotate(-61.2deg); }
+  73% {
+    width: 2664.5px;
+    height: 2664.5px;
+    transform: rotate(-62.05deg); }
+  74% {
+    width: 2738px;
+    height: 2738px;
+    transform: rotate(-62.9deg); }
+  75% {
+    width: 2812.5px;
+    height: 2812.5px;
+    transform: rotate(-63.75deg); }
+  76% {
+    width: 2888px;
+    height: 2888px;
+    transform: rotate(-64.6deg); }
+  77% {
+    width: 2964.5px;
+    height: 2964.5px;
+    transform: rotate(-65.45deg); }
+  78% {
+    width: 3042px;
+    height: 3042px;
+    transform: rotate(-66.3deg); }
+  79% {
+    width: 3120.5px;
+    height: 3120.5px;
+    transform: rotate(-67.15deg); }
   80% {
-    transform: rotate(-67.3deg);
-  }
+    width: 3200px;
+    height: 3200px;
+    transform: rotate(-68deg); }
+  81% {
+    width: 3280.5px;
+    height: 3280.5px;
+    transform: rotate(-68.85deg); }
+  82% {
+    width: 3362px;
+    height: 3362px;
+    transform: rotate(-69.7deg); }
+  83% {
+    width: 3444.5px;
+    height: 3444.5px;
+    transform: rotate(-70.55deg); }
+  84% {
+    width: 3528px;
+    height: 3528px;
+    transform: rotate(-71.4deg); }
+  85% {
+    width: 3612.5px;
+    height: 3612.5px;
+    transform: rotate(-72.25deg); }
+  86% {
+    width: 3698px;
+    height: 3698px;
+    transform: rotate(-73.1deg); }
+  87% {
+    width: 3784.5px;
+    height: 3784.5px;
+    transform: rotate(-73.95deg); }
+  88% {
+    width: 3872px;
+    height: 3872px;
+    transform: rotate(-74.8deg); }
+  89% {
+    width: 3960.5px;
+    height: 3960.5px;
+    transform: rotate(-75.65deg); }
   90% {
-    transform: rotate(-76.15deg);
-  }
+    width: 4050px;
+    height: 4050px;
+    transform: rotate(-76.5deg); }
+  91% {
+    width: 4140.5px;
+    height: 4140.5px;
+    transform: rotate(-77.35deg); }
+  92% {
+    width: 4232px;
+    height: 4232px;
+    transform: rotate(-78.2deg); }
+  93% {
+    width: 4324.5px;
+    height: 4324.5px;
+    transform: rotate(-79.05deg); }
+  94% {
+    width: 4418px;
+    height: 4418px;
+    transform: rotate(-79.9deg); }
+  95% {
+    width: 4512.5px;
+    height: 4512.5px;
+    transform: rotate(-80.75deg); }
+  96% {
+    width: 4608px;
+    height: 4608px;
+    transform: rotate(-81.6deg); }
+  97% {
+    width: 4704.5px;
+    height: 4704.5px;
+    transform: rotate(-82.45deg); }
+  98% {
+    width: 4802px;
+    height: 4802px;
+    transform: rotate(-83.3deg); }
+  99% {
+    width: 4900.5px;
+    height: 4900.5px;
+    transform: rotate(-84.15deg); }
   100% {
-    top: -159500px;
-    left: -159000px;
-    width: 320000px;
-    height: 320000px;
+    width: 5000px;
+    height: 5000px;
     transform: rotate(-85deg); } }

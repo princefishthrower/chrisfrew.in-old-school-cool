@@ -2,14 +2,25 @@ body {
   overflow: hidden;
 }
 
-img {
-  top: -1640px;
-  left: -1170px;
-  width: 4300px;
-  height: 4300px;
-  transform: rotate(3.5deg);
+.container {
   position: absolute;
-  animation: zoomSimple 5s ease-in infinite;
+  margin: auto;
+  width: 500px; /* change size to what you want */
+  height: 500px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+img {
+  // top: -1640px;
+  // left: -1170px;
+  // width: 4300px;
+  // height: 4300px;
+  transform: rotate(3.5deg) translate(-50%, -50%);
+  position: relative;;
+  animation: zoom 5s linear infinite;
 }
 
 // @function sqrt($r) {
@@ -24,33 +35,15 @@ img {
 //   @return $x1;
 // }
 //
-// @keyframes zoom {
-//   @for $i from 0 through 100 {
-//     $percent: 1% * $i;
-//
-//     #{$percent} {
-//       top: -(3200*$i)/2+500#{px};
-//       left: -(3200*$i)/2+1000#{px};
-//       width: 3200*$i#{px};
-//       height: 3200*$i#{px};
-//       transform: rotate(-$i*.85+4.35#{deg})
-//     }
-//   }
-// }
-
-@keyframes zoomSimple {
-  0% {
-    top: -1640px;
-    left: -1170px;
-    width: 4300px;
-    height: 4300px;
-    transform: rotate(3.5deg);
-  }
-  100% {
-    top: -159500px;
-    left: -159000px;
-    width: 320000px;
-    height: 320000px;
-    transform: rotate(-85deg);
+@keyframes zoom {
+  @for $i from 0 through 100 {
+    $percent: 1% * $i;
+    #{$percent} {
+      // top: -(3200*$i)/2+500#{px};
+      // left: -(3200*$i)/2+1000#{px};
+      width: .5*$i*$i#{px};
+      height: .5*$i*$i#{px};
+      transform: rotate(-$i*.85#{deg})
+    }
   }
 }
