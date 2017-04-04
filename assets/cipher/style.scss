@@ -22,7 +22,7 @@ body {
   z-index: 99999;
 }
 .cipherAnimation {
-  animation: fadeAway 5s linear 1;
+  animation: fadeAway 8s linear 1;
   animation-fill-mode: forwards;
 }
 
@@ -37,41 +37,41 @@ body {
   z-index: 12;
 }
 .fog1Animation {
-  animation: drift1 5s ease-in-out infinite;
+  animation: drift1 8s ease-in-out infinite;
 }
 .fog2 {
   z-index: 11;
 }
 .fog2Animation {
-  animation: drift2 5s linear infinite;
+  animation: drift2 8s linear infinite;
 }
 .fog3 {
   z-index: 4;
 }
 .fog3Animation {
-  animation: drift3 5s ease-in infinite;
+  animation: drift3 8s ease-in infinite;
 }
 .fog4 {
   z-index: 10;
 }
 .fog4Animation {
-  animation: drift4 5s ease-out infinite;
+  animation: drift4 8s ease-out infinite;
 }
 .fog5 {
   z-index: 7;
 }
 .fog5Animation {
-  animation: drift5 5s linear infinite;
+  animation: drift5 8s linear infinite;
 }
 .fog6 {
   z-index: 1;
 }
 .fog6Animation {
-  animation: drift6 5s ease-in-out infinite;
+  animation: drift6 8s ease-in-out infinite;
 }
 //fog divs drift back and forth
  .fogAnimation {
-  animation-delay: 5s;
+  animation-delay: 8s;
   animation-direction: alternate;
 }
 
@@ -82,8 +82,8 @@ body {
   z-index: 99;
 }
 .ringAnimation {
-  animation: spin 5s linear infinite;
-  animation-delay: 5s;
+  animation: spin 8s linear infinite;
+  animation-delay: 8s;
 }
 
 
