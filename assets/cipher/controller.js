@@ -1,4 +1,23 @@
-$( document ).ready(function() {
+/**
+ * Trigger a callback when the selected images are loaded:
+ * @param {String} selector
+ * @param {Function} callback
+  */
+var onImgLoad = function(selector, callback){
+    $(selector).each(function(){
+        if (this.complete || /*for IE 10-*/ $(this).height() > 0) {
+            callback.apply(this);
+        }
+        else {
+            $(this).on('load', function(){
+                callback.apply(this);
+            });
+        }
+    });
+};
+
+onImgLoad(".cipher", function(){
+  console.log("firing...");
   $(".cipher").addClass("cipherAnimation");
   $(".ring").addClass("ringAnimation");
   $(".fog1").addClass("fog1Animation fogAnimation");
@@ -12,4 +31,5 @@ $( document ).ready(function() {
   setTimeout(function() {
     new Audio("wheelstart.mp3").play();
   }, 5000);
-})
+});
+
