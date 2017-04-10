@@ -22,7 +22,7 @@ html {
 	height: 100%;
 }
 body {
-	min-height: 100%; border-left: 8px solid #F92672; border-right: 8px solid #F92672;
+	min-height: 100%; border-left: 16px solid #F92672; border-right: 16px solid #F92672;
 	/*background-image: url("../img/1.png");*/
 	/*background-repeat: no-repeat;*/
 	/*background-size: cover;*/
