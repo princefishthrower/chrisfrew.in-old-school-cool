@@ -22,7 +22,6 @@ html {
 	height: 100%;
 }
 body {
-	overflow: hidden; /* test push */
 	min-height: 100%; border-left: 8px solid #F92672; border-right: 8px solid #F92672;
 	/*background-image: url("../img/1.png");*/
 	/*background-repeat: no-repeat;*/
@@ -122,6 +121,10 @@ body {
 .biopic {
 	height: 0;
 	border-radius: 50%;
+}
+
+.work {
+	z-index: 9999999;
 }
 
 /* ================================================================================================================== */
