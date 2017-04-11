@@ -111,7 +111,7 @@ ralign {
 }
 
 table.center {
-    margin-left:auto; 
+    margin-left:auto;
     margin-right:auto;
 }
 
@@ -239,7 +239,7 @@ a:focus {
     background-image: url(../img/godsgift.jpg);
     background-attachment: scroll;
     background-position: 50% 100%;
-    background-repeat: no-repeat no-repeat;    
+    background-repeat: no-repeat no-repeat;
     background-color: #000;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -334,6 +334,21 @@ a:focus {
     -o-background-size: cover;
 }
 
+.bachelorintro {
+    display: table;
+    width: 100%;
+    height: auto;
+    padding: 100px 0;
+    text-align: center;
+    color: #000;
+    background: url(../img/backbay.jpg) no-repeat bottom center scroll;
+    background-color: #000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
 .gradientblack{
     pointer-events:none; /*so we can still click stuff!*/
     position:absolute;
@@ -394,7 +409,7 @@ k1 {
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 100px;
     text-transform:uppercase;
-    
+
 }
 
 
@@ -457,7 +472,7 @@ k1 {
     -moz-animation-timing-function: linear;
 }
 
-@-webkit-keyframes pulse {    
+@-webkit-keyframes pulse {
     0 {
         -webkit-transform: scale(1);
         transform: scale(1);
@@ -474,7 +489,7 @@ k1 {
     }
 }
 
-@-moz-keyframes pulse {    
+@-moz-keyframes pulse {
     0 {
         -moz-transform: scale(1);
         transform: scale(1);
@@ -706,7 +721,7 @@ body {
     -ms-animation-duration: 2000ms;
     -ms-animation-iteration-count: 1;
     -ms-animation-timing-function: linear;
-    
+
     animation-name: spin;
     animation-duration: 2000ms;
     animation-iteration-count: 1;
@@ -746,7 +761,7 @@ body {
     -ms-animation-duration: 1000ms;
     -ms-animation-iteration-count: 1;
     -ms-animation-timing-function: linear;
-    
+
     animation-name: barrel;
     animation-duration: 1000ms;
     animation-iteration-count: 1;
@@ -786,7 +801,7 @@ body {
     -ms-animation-duration: 100000ms;
     -ms-animation-iteration-count: 1;
     -ms-animation-timing-function: cubic-bezier(0,.96,0,.98);
-    
+
     animation-name: tilt;
     animation-duration: 100000ms;
     animation-iteration-count: 1;
@@ -826,7 +841,7 @@ body {
     -ms-animation-duration: 10000ms;
     -ms-animation-iteration-count: 1;
     -ms-animation-timing-function: cubic-bezier(0,.96,0,.98);
-    
+
     animation-name: untilt;
     animation-duration: 10000ms;
     animation-iteration-count: 1;
@@ -866,7 +881,7 @@ body {
     -ms-animation-duration: 100000ms;
     -ms-animation-iteration-count: 1;
     -ms-animation-timing-function: cubic-bezier(0,.96,0,.98);
-    
+
     animation-name: invert;
     animation-duration: 100000ms;
     animation-iteration-count: 1;
@@ -913,5 +928,3 @@ body {
 .flottFlott {
     font-family: Flottflott;
 }
-
-

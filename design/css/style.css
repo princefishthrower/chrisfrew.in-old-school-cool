@@ -1,48 +1,21 @@
-/* Created by Digital Dreamer [www.dreamer.de] for Schmid+Widmaier Design [www.schmidwidmaier.de] */
-
-
-/* ================================================================================================================== */
-/* Init */
-
-/* Includes/fonts */
-
-/* Reset CSS / Generic Adjustments */
-
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
-
-*,*:before,*:after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;}
-img,figure,iframe{display:block;max-width:100%;height:auto;}
-img{margin:0 auto;}
-
-
-/* ================================================================================================================== */
-/* Page basics */
-
-html {
-	height: 100%;
+html, body {
+	max-width: 100%;
+	overflow-x: hidden;
+	/*overflow-y: hidden;
+	color: #000; font: 15px/1.67 'Times New Roman',serif; letter-spacing: 0.05em;*/
 }
-body {
-	min-height: 100%; border-left: 16px solid #F92672; border-right: 16px solid #F92672;
-	/*background-image: url("../img/1.png");*/
-	/*background-repeat: no-repeat;*/
-	/*background-size: cover;*/
-	/*background-position: 0px 0px;*/
-	/*background-repeat: repeat-x;*/
-
-	/*animation: scrollBackground 8s linear infinite;*/
-	color: #000; font: 15px/1.67 'Times New Roman',serif; letter-spacing: 0.05em;
-}
-
+/* pseudo div for background*/
 #background {
-	width: 100%;
-	height: 100%;
-	display: block;
-	position: absolute;
+	width: 1px;
+	height: 1px;
+	display: block:
+	position: relative;
 }
-
 #background::after {
+	border-left: 16px solid #F92672;
+	border-right: 16px solid #F92672;
 	content:"";
-	background: url("../img/1.png");
+	background: url("../img/background.png");
 	background-repeat: repeat-x;
 	opacity: 1;
 	top: 0;
@@ -50,48 +23,50 @@ body {
 	bottom: 0;
 	right: 0;
 	position: absolute;
-	margin-top: 5%; /* to center background image vertically */
-	z-index: -1;
+	z-index: -10;
 	animation: scrollBackground 8s linear infinite;
 }
 
+ul {
+	padding: 0;
+	list-style-type: none;
+}
 
-/* ================================================================================================================== */
-/* Page sidebar */
+a {
+	display: block;
+}
+
+a:hover {
+	text-decoration: none;
+}
 
 /* Logo */
 .page_logo {
-	position: fixed; top: 64px; left: 36px; z-index: 1010;
-	width: 154px;
+	padding: 28px;
+	z-index: 2000;
+	width: 210px;
+	position: absolute;
 }
 
 /* Nav */
 .page_nav {
-	position: fixed; top: 0; left: 8px; z-index: 1000;
-	padding: 230px 28px 64px 28px; height: 100%; width: 210px;
+	position: fixed;
+	z-index: 1000;
+	padding: 250px 28px 64px 28px;
+	height: 100%;
+	width: 210px;
 	text-align: center;
 	line-height: 1.2;
 }
 .page_nav li {
-	margin-bottom: 0.5em;
+	margin: 0.5em;
 }
 .page_nav a {
 	left: 36px; /* letter-spacing underline workaround */
 	color: #000;
 }
+/* cool font for the nav */
 .page_nav_main a {
-  text-transform: uppercase;
-	font-weight: bold;
-	-webkit-text-stroke: 3px black;
-	text-shadow:
-		3px 3px 0 #fff,
-		-1px -1px 0 #fff,
-		1px -1px 0 #fff,
-		-1px 1px 0 #fff,
-		1px 1px 0 #fff;
-	font-size: 2rem;
-}
-.page_nav_main-work a {
   text-transform: uppercase;
 	font-weight: bold;
 	-webkit-text-stroke: 3px black;
@@ -106,18 +81,13 @@ body {
 .page_nav a {
 	text-decoration: none;
 }
-.page_nav a:hover {
-	border-bottom: 1px solid #999;
-}
-.page_nav a.active {
-	border-bottom: 1px solid #999;
-}
-
 .bio {
 	font-size: 16px;
 	font-weight: bold;
+	margin: 0;
 	opacity: 0;
 	height: 0;
+	display: none;
 }
 
 .biopic {
@@ -125,102 +95,15 @@ body {
 	border-radius: 50%;
 }
 
-.work {
-	z-index: 9999999;
-}
-
-/* ================================================================================================================== */
-/* Responsive Adjustments */
-
+/* phones and tablets */
 @media (max-width: 1023px) {
-
-	#slides, #slides * { display: block !important; position: static !important; top: 0 !important; left: 0 !important; height: auto !important; width: auto !important; }
-	#slides img { max-width: 100% !important; }
-	#slides .slides-pagination { display: none !important; }
-
 	body {
 		font-size: 13px;
 	}
-
-	/* relative column size */
-	/* (full 662px, col 90px, gutter 46px, right border 28px) */
-	.grid { max-width: 481px; margin: 0 auto; }
-	.grid_column_sizer, .grid_item_1col, .grid_item_2col, .grid_item_3col { width: 47%; }
-	.grid_gutter_sizer { width: 6%; }
-
-	.detail_side {
-		width: 30%;
-	}
-	.detail_main {
-		margin-right: 33%;
-	}
-
-}
-
-@media (max-width: 639px) {
-
-	.page_header {
-		position: fixed; top: 0; left: 8px; right: 8px; z-index: 1005;
-		height: 48px; padding: 8px;
-		background: #fff;
-	}
-	.reduced .page_header {
-		background: none;
-	}
-	.page_logo {
-		position: static;
-		width: auto;
-	}
-	.page_logo img {
-		width: auto; height: 100px;
-	}
-
-	.page_nav {
-		/*overflow: hidden;*/
-		top: 100px; right: 8px;
-		width: auto; max-height: 0px; padding: 72px 0 0;
-		transition: max-height 0.5s, top 0.5s;
-	}
-	.page_nav li {
-		margin-bottom: 1em;
-	}
-	.page_nav_open {
-		top: 0;
-		max-height: 100%;
-	}
-	.filter {
-		display: none;
-	}
-
-	.page_content {
-		padding: 72px 16px 16px;
-	}
-
-	.detail_side {
-		float: none;
-		width: auto;
-	}
-	.detail_main {
-		margin: 0;
-	}
-	.page_switch a {
-		margin: 0;
-	}
-
-	.grid_item_text {
-		visibility: visible;
-	}
-
-	.bio {
-			padding: 30px;
-	}
-
 }
 
 @media (max-width: 639px), (max-height: 479px) {
-
 	.page_nav ul {
-		/*overflow: hidden;*/
 	}
 	.page_nav li {
 		float: left; width: 50%;
@@ -228,16 +111,12 @@ body {
 	.page_nav_meta {
 		margin: 0;
 	}
-
 }
 
 @media (max-width: 359px) {
-
 	.page_nav li {
 		float: none; width: auto;
 	}
-	.grid_column_sizer, .grid_item_1col, .grid_item_2col, .grid_item_3col { width: 100%; }
-
 }
 
 @keyframes scrollBackground {
