@@ -1,0 +1,32 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 240px;
+  height: 240px;
+  text-align: center;
+}
+
+.picture {
+  position: absolute;
+  left: 387px;
+  top: -20px;
+  animation: appear 5s 1;
+  animation-delay: 2s;
+  animation-fill-mode: both;
+  width: 250px;
+  opacity: 0;
+}
+
+@keyframes appear{
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
