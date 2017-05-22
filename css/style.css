@@ -13,6 +13,11 @@ a:link {
     text-decoration: none;
 }
 
+li a {
+  display: inline-block !important;
+  transition: rotate(360deg);
+}
+
 ul {
   padding: 0;
 }
@@ -49,6 +54,19 @@ h1 {
     top: 30px;
 }
 
+.site-image {
+  border-radius: 100%;
+}
+
 .title {
   width: 100%;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
