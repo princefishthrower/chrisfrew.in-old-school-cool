@@ -2,6 +2,7 @@
 body {
     font-family: Roboto;
     background: #dbe8ff;
+    text-align: center;
 }
 
 a {
@@ -12,15 +13,15 @@ a:link {
     text-decoration: none;
 }
 
+ul {
+  padding: 0;
+}
+
 ul li {
     display: inline;
 }
 
 h1 {
-    text-align: center;
-}
-
-h2 {
     text-align: center;
 }
 
@@ -33,33 +34,21 @@ h2 {
     width: 90%;
 }
 
+.flexBox {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
 .site {
-    display: inline-block;
-    position: relative;
-    margin: 70px;
+  display: inline-block;
+    margin: 2rem;
     top: 30px;
 }
 
-.wrapper {
-    text-align: center;
-}
-
-.wrapper ul {
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-}
-
-.wrapper li {
-    float: left;
-    padding: 2px 5px;
-}
-
-
-/* on mobile / smaller screens, change the list to block so it is a verticle list */
-
-@media (max-width: 400px) {
-    .site {
-        margin: 10px;
-    }
+.title {
+  width: 100%;
 }
