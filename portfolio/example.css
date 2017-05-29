@@ -4,11 +4,24 @@ body {
   color: #333;
   margin: 0 auto;
   padding: 0;
+  height: 100%;
 }
-body::after {
-  border-left: 16px solid #F92672;
-  border-right: 16px solid #F92672;
-}
+/*#background::after {
+	border-left: 16px solid #F92672;
+	border-right: 16px solid #F92672;
+	content:"";
+	background: url("../img/background.png");
+	background-repeat: repeat-x;
+	opacity: 1;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -10;
+	animation: scrollBackground 8s linear infinite;
+}*/
+
 .clearfix:after {
   visibility: hidden;
   display: block;
@@ -46,6 +59,8 @@ a:hover {
 }
 .container {
   margin: 0 auto;
+  background: #F92672;
+  
 }
 h1,
 h2,
@@ -62,6 +77,8 @@ h3 {
 #Gallery {
   margin: 0 auto;
   margin-bottom: 20px;
+  background: #F92672;
+
 }
 .loading-msg {
   font-size: 20px;
