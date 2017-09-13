@@ -1,0 +1,19 @@
+{
+  "name": "chrisfrew.in",
+  "version": "1.0.0",
+  "description": "chrisfrew.in personal website",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://guitarshreder07@bitbucket.org/guitarshreder07/chrisfrew.in.git"
+  },
+  "author": "Christopher Frewin",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/guitarshreder07/chrisfrew.in#readme",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
+}
