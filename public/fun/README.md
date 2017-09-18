@@ -1,1 +1,0 @@
-My own personal website based off the open source Bootstrap Grayscale theme.
