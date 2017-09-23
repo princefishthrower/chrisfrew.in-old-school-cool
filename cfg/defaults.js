@@ -54,7 +54,15 @@ function getDefaultModules() {
       {
         test: /\.pdf$/,
         loader: 'file?name=[path][name].[ext]'
-      }
+      },
+      {
+        test: /\.mp3$/,
+        loader: 'url-loader'
+      },
+      {
+        test: /\.json$/,
+        loader: 'json'
+      },
     ]
   };
 }

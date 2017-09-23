@@ -2,10 +2,14 @@
 require('normalize.css/normalize.css');
 require('../assets/css/monokai.css');
 require('styles/Home.css');
+//import 'react-select/dist/react-select.css';
 
 // react
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router-dom';
+
+// 3rd party components
+//import Select from 'react-select';
 
 // images
 var professional = require("../images/Home/professional.png");
@@ -19,6 +23,18 @@ var wallstreetbetswally = require("../images/Home/wallstreetbetswally.png");
 var worldhappinessmeter = require("../images/Home/worldhappinessmeter.png");
 
 class Home extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      value: 'abap-web-ide'
+    }
+    this.onChange = this.onChange.bind(this)
+  }
+  onChange(event) {
+    this.setState({value: event.target.value});
+    console.log('pushing history...');
+    this.props.history.push('/features/' + event.target.value)
+  }
   render () {
         return (
           <div>
@@ -102,6 +118,23 @@ class Home extends React.Component {
                       <h4>World<br/>Happiness<br/>Meter</h4>
                       <img src={worldhappinessmeter} className="site-image" alt="World Happiness Meter" width="100px" />
                     </a>
+                  </div>
+                </li>
+                <li>
+                  <div className="site">
+                    <h4>Other Apps<br/>And Craziness<br/>I've Built</h4>
+                    <select onChange={this.onChange} value={this.state.value}>
+                      <option>abap-web-ide</option>
+                      <option>beer-list</option>
+                      <option>boston-weather</option>
+                      <option>epic-de</option>
+                      <option>epic-en</option>
+                      <option>human-genome</option>
+                      <option>rap-helper</option>
+                      <option>ski-monitor</option>
+                      <option>stock-o-matic</option>
+                      <option>u-pursuit</option>
+                    </select>
                   </div>
                 </li>
               </ul>
