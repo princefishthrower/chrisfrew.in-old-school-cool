@@ -26,7 +26,6 @@ class AppComponent extends React.Component {
         <div>
           <Route exact path="/" component={Home}></Route>
           <Route path="/professional" component={Professional}></Route>
-
           <Route path="/features/epic-de" component={EpicDe}></Route>
         </div>
       </Router>
